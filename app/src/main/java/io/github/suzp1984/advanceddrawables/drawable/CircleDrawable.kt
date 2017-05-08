@@ -14,7 +14,7 @@ class CircleDrawable : Drawable() {
     init {
         backgroundPaint.color = Color.rgb(255, 0, 0)
 
-        txtPaint.setTypeface(Typeface.DEFAULT)
+        txtPaint.typeface = Typeface.DEFAULT
         txtPaint.color = Color.rgb(0, 0, 0)
     }
 
@@ -61,7 +61,7 @@ class CircleDrawable : Drawable() {
         Log.e(TAG, "rect width = " + rect.width())
 
         while (true) {
-            txtPaint.setTextSize(txtSize)
+            txtPaint.textSize = txtSize
             txtPaint.getTextBounds(text, 0, text.length, txtRect)
             val w = txtPaint.measureText(text)
 
