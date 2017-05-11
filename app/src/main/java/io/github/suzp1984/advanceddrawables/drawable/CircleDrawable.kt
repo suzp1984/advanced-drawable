@@ -10,6 +10,7 @@ class CircleDrawable : Drawable() {
     private var txtPaint: Paint = Paint()
     private var text: String = ""
     private val TAG : String = "CircleDrawable"
+    private var alphaValue : Int = alpha
 
     init {
         backgroundPaint.color = Color.rgb(255, 0, 0)
@@ -23,6 +24,9 @@ class CircleDrawable : Drawable() {
             return
         }
 
+        backgroundPaint.alpha = alphaValue
+        txtPaint.alpha = alphaValue
+
         val rect : Rect = bounds
         canvas.drawCircle(rect.exactCenterX(), rect.exactCenterY(), rect.width() / 2.0f, backgroundPaint)
 
@@ -35,16 +39,27 @@ class CircleDrawable : Drawable() {
     }
 
     override fun setAlpha(alpha: Int) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        alphaValue = alpha
+        invalidateSelf()
+    }
+
+    override fun getAlpha(): Int {
+        return alphaValue
     }
 
     override fun getOpacity(): Int {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return PixelFormat.UNKNOWN
+
+        if (alphaValue < 255) {
+            return PixelFormat.TRANSLUCENT
+        } else {
+            return PixelFormat.OPAQUE
+        }
     }
 
     override fun setColorFilter(colorFilter: ColorFilter?) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        backgroundPaint.colorFilter = colorFilter
+        txtPaint.colorFilter = colorFilter
+        invalidateSelf()
     }
 
     fun setText(t : String) {
