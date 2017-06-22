@@ -10,7 +10,7 @@ class CircleDrawable : Drawable() {
     private var txtPaint: Paint = Paint()
     private var text: String = ""
     private val TAG : String = "CircleDrawable"
-    private var alphaValue : Int = alpha
+    private var alphaValue : Int = 0xff
 
     init {
         backgroundPaint.style = Paint.Style.FILL
