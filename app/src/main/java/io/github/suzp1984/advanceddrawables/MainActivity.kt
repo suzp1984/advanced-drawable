@@ -14,7 +14,8 @@ class MainActivity : AppCompatActivity() {
         val image : ImageView = findViewById(R.id.image) as ImageView
 
         val circle : CircleDrawable = CircleDrawable()
-        circle.setText("0")
+        circle.setText("8")
+        circle.alpha = 255
         image.setImageDrawable(circle)
     }
 }

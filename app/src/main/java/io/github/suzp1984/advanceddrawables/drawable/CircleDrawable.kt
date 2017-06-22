@@ -13,6 +13,7 @@ class CircleDrawable : Drawable() {
     private var alphaValue : Int = alpha
 
     init {
+        backgroundPaint.style = Paint.Style.FILL
         backgroundPaint.color = Color.rgb(255, 0, 0)
 
         txtPaint.typeface = Typeface.DEFAULT
@@ -64,6 +65,7 @@ class CircleDrawable : Drawable() {
 
     fun setText(t : String) {
         text = t
+        invalidateSelf()
     }
 
     private fun adjustTextSize() : Float {
